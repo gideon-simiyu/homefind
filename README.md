@@ -66,8 +66,8 @@ HomeFind is an affordable housing marketplace app that connects individuals seek
    npm install
    ```
    
-3.**Environment Setup**:
-Copy the .env.example to create your own .env file:
+3. **Environment Setup**:<br/>
+   Copy the .env.example to create your own .env file:
    ```bash
     cp env.example .env
   ```
