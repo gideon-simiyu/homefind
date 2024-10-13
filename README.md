@@ -56,7 +56,7 @@ HomeFind is an affordable housing marketplace app that connects individuals seek
 ### Setup Instructions
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/homefind.git
+   git clone https://github.com/gideon-simiyu/homefind.git
    cd homefind
    ```
    
