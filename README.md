@@ -58,11 +58,13 @@ HomeFind is an affordable housing marketplace app that connects individuals seek
    ```bash
    git clone https://github.com/your-username/homefind.git
    cd homefind
+   ```
    
 2. **Install dependencies**:
    ```bash
    composer install
    npm install
+   ```
    
 3.**Environment Setup**:
 Copy the .env.example to create your own .env file:
