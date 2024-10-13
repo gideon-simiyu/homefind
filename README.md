@@ -70,7 +70,7 @@ HomeFind is an affordable housing marketplace app that connects individuals seek
    Copy the .env.example to create your own .env file:
    ```bash
     cp env.example .env
-  ```
+     ```
 
 4. **Generate application key**:
    ```bash
