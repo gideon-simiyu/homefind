@@ -11,24 +11,20 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Montserrat', 'sans-serif']
+      }
+    },
   },
   flyonui: {
     themes: [
-      {
-        primary: {
-          primary: colors.indigo["600"],
-          secondary: colors.violet["600"],
-          accent: "#37cdbe",
-          neutral: "#3d4451",
-          "base-100": colors.slate["800"]
-        }
-      },
+      "dark"
     ]
   },
   plugins: [
-    flyonui,
-    flyonui0
+    require("flyonui"),
+    require("flyonui/plugin")
   ],
 }
 
