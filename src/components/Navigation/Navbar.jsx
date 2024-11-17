@@ -1,25 +1,25 @@
-import { useEffect, useState } from "react";
+import { useState, useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import client from "../../backend/client";
+import { UserContext } from "../../context/user";
+
 
 const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
     const path = location.pathname.split("/")[1];
-    const [user, setUser] = useState(null);
-
-    const [authenticated, isAuthenticated] = useState(false);
+    const { user, setUser } = useContext(UserContext);
 
     const logout = () => {
+        setUser({
+            authenticated: false,
+            user: null
+        });
         client.authStore.clear();
         navigate("/login");
     }
 
-    useEffect(() => {
-        isAuthenticated(client.authStore.isValid);
-        setUser(client.authStore.model);
-    }, []);
 
     return (
         <nav className="navbar rounded-box flex w-full items-center justify-between gap-2 shadow">
@@ -54,22 +54,22 @@ const Navbar = () => {
                     <button id="dropdown-scrollable" type="button" className="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
                         <div className="avatar">
                             <div className="size-9.5 rounded-full">
-                                <img src="/images/user.webp" alt="avatar 1" />
+                                <img src={user?.user?.avatar || user?.user?.avatar_url || "/images/user.webp"} referrerPolicy="no-referrer" alt="avatar 1" />
                             </div>
                         </div>
                     </button>
 
-                    {authenticated ? (
+                    {user?.authenticated ? (
                         <ul className="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-avatar">
                             <li className="dropdown-header gap-2">
                                 <div className="avatar">
                                     <div className="w-10 rounded-full">
-                                        <img src="/images/user.webp" alt="avatar" />
+                                        <img src={user?.user?.avatar || user?.user?.avatar_url || "/images/user.webp"} referrerPolicy="no-referrer" alt="avatar" />
                                     </div>
                                 </div>
                                 <div>
-                                    <h6 className="text-base-content/90 text-base font-semibold">John Doe</h6>
-                                    <small className="text-base-content/50">Admin</small>
+                                    <h6 className="text-base-content/90 text-base font-semibold">{user?.user?.name}</h6>
+                                    <small className="text-base-content/50">{user?.user?.role}</small>
                                 </div>
                             </li>
                             <li>

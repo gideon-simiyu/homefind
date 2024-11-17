@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import client from "../../backend/client.js";
 import { Link } from "react-router-dom";
+import { login_with_password } from "../../backend/auth";
+import { LoadingContext } from "../../context/loading";
 
 function Login() {
-
-    const [loading, setLoading] = useState(true);
+    const { setLoading } = useContext(LoadingContext);
 
     const [data, setData] = useState({
         email: "",
@@ -34,16 +35,12 @@ function Login() {
     const login = async (e) => {
         e.preventDefault();
         setLoading(true);
-        await client.collection('users').authWithPassword(
-            email,
-            password,
-        ).then((response) => {
-            setLoading(false);
-            console.log(response);
-        }).catch((error) => {
-            console.log(error);
-        })
+        const { success, error, message } = await login_with_password(email, password);
+        setLoading(false);
 
+        if (error) {
+            console.log(error);
+        }
     }
 
     const [passwordShown, setPasswordShown] = useState(false);
