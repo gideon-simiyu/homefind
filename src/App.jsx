@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router-dom";
 import React, {Suspense, useContext} from "react";
 import Navbar from "./components/Navigation/Navbar";
 import { LoadingContext } from "./context/loading";
+import Properties from "./pages/Properties";
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/properties" element={<Properties />} />
             </Routes>
         </Suspense>
     )

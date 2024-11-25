@@ -26,7 +26,7 @@ const Navbar = () => {
             <div className="navbar-start max-sm:w-1/4">
                 <a className="link text-base-content/90 link-neutral text-xl font-semibold no-underline flex gap-3" href="#">
                     <img className="h-8 w-8" src="/logo.png" alt="" />
-                    <span>HomeFind</span>
+                    <span className="text-primary text-2xl">HomeFind</span>
                 </a>
             </div>
             <div className="navbar-center max-sm:hidden">
@@ -52,7 +52,7 @@ const Navbar = () => {
                 </div>
                 <div className="dropdown relative inline-flex [--auto-close:inside] [--offset:8] [--placement:bottom-end]">
                     <button id="dropdown-scrollable" type="button" className="dropdown-toggle flex items-center" aria-haspopup="menu" aria-expanded="false" aria-label="Dropdown">
-                        <div className="avatar">
+                        <div className="avatar border-4 border-primary rounded-full">
                             <div className="size-9.5 rounded-full">
                                 <img src={user?.user?.avatar || user?.user?.avatar_url || "/images/user.webp"} referrerPolicy="no-referrer" alt="avatar 1" />
                             </div>
@@ -62,7 +62,7 @@ const Navbar = () => {
                     {user?.authenticated ? (
                         <ul className="dropdown-menu dropdown-open:opacity-100 hidden min-w-60" role="menu" aria-orientation="vertical" aria-labelledby="dropdown-avatar">
                             <li className="dropdown-header gap-2">
-                                <div className="avatar">
+                                <div className="avatar border border-primary rounded-full">
                                     <div className="w-10 rounded-full">
                                         <img src={user?.user?.avatar || user?.user?.avatar_url || "/images/user.webp"} referrerPolicy="no-referrer" alt="avatar" />
                                     </div>
